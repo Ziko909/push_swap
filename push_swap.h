@@ -6,7 +6,7 @@
 /*   By: zaabou <zaabou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 23:07:33 by zaabou            #+#    #+#             */
-/*   Updated: 2022/04/22 03:35:12 by zaabou           ###   ########.fr       */
+/*   Updated: 2022/04/22 05:45:13 by zaabou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct linked_list{
 typedef struct data{
     t_list **head_a;
     t_list **head_b;
+    t_list  *end_a;
     int     min_range;
     int     max_range;
     int     i;

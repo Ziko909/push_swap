@@ -1,74 +1,28 @@
 
 #include "push_swap.h"
 
-// char    *ft_strjoin(char *s1, char *s2)
-// {
-// 	int		i;
-// 	int		j;
-// 	char	*nstr;
-// 	if (!s1) 
-// 		s1 = ft_strdup("");
-
-// 	i = 0;
-// 	j = 0;
-// 	while (s1[i] != '\0')
-// 		i++;
-// 	while (s2[i])
-// 		i++;
-// 	nstr = (char *) malloc((i + 1) * sizeof(char));
-// 	if (!nstr)
-// 		return(NULL);
-// 	i = 0;
-// 	while (s1[i] != '\0')
-// 	{
-// 		nstr[i] = s1[i];
-// 		i++;
-// 	}
-// 	while (s2[j])
-// 		nstr[i++] = s2[j++];
-// 	nstr[i] = '\0';
-// 	return (nstr);
-// }
-
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: zaabou <marvin@42.fr>                      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/11 11:30:29 by zaabou            #+#    #+#             */
-/*   Updated: 2021/11/21 02:58:24 by zaabou           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include "push_swap.h"
-char    *ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
         size_t  lns;
         char    *nws;
         size_t  i;
         size_t  j;
 
-        if (!s1 || !s2)
-                return (NULL);
+        if (!s1)
+                return (ft_strdup(s2));
         lns = ft_strlen(s1) + ft_strlen(s2);
         i = 0;
         j = 0;
         nws = (char *) malloc(lns + 1);
-        if (nws == '\0')
+        if (!nws)
                 return (NULL);
         while (s1[j])
-        {
                 nws[i++] = s1[j++];
-        }
         j = 0;
         while (s2[j])
-        {
                 nws[i++] = s2[j++];
-        }
         nws[i] = '\0';
-        return (nws);
+        return (free(s1),nws);
 }
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)

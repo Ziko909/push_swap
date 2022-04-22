@@ -6,7 +6,7 @@
 /*   By: zaabou <zaabou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 01:22:41 by zaabou            #+#    #+#             */
-/*   Updated: 2022/04/22 03:37:35 by zaabou           ###   ########.fr       */
+/*   Updated: 2022/04/22 06:55:33 by zaabou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_data	*fill_the_stack_a(int ac, t_data *data)
 	data->head_a = malloc(sizeof(t_list *));
 	data->head_b = malloc(sizeof(t_list *));
 
-	data->head_b = NULL;
+	// data->head_b = NULL;
 	node = malloc(sizeof(t_list));
 	(*data->head_a) = node;
 	data->i = 0;
@@ -35,18 +35,57 @@ t_data	*fill_the_stack_a(int ac, t_data *data)
 	return (data);
 }
 
+void print_stack(t_list **head)
+{
+	while (*head)
+	{
+		printf("in[%d] num[%d]\n",(*head)->index, (*head)->number);
+		*head = (*head)->next;
+	}
+}
+
 t_data	*get_joined_args(int ac, char **av, t_data *data)
 {
 	data->i = 1;
-	
+	data->str = NULL;
 	while (data->i <= ac - 1)
 	{
 		if (data->i != 1)
 			data->str = ft_strjoin(data->str, " ");
 		data->str = ft_strjoin(data->str, av[data->i]);
+		printf("%s\n", data->str);
 		data->i++;
 	}
 	return (data);
+}
+void	fill_the_stack_b(t_data *data)
+{
+	while (lst_size(*data->head_a) > 0)
+	{
+		data->end_a = lst_last((*data->head_a));
+		printf("[%d]\n", data->end_a->index);
+		break ;
+		// if (data->end_a->index <= data->max_range)
+		// {
+		// 	reverse_rotate_inside_one_stack(data->head_a);
+		// 	push_to_the_other_stack(data->head_a, data->head_b);
+		// 	if (data->end_a->index > data->min_range)
+		// 		swap(data->head_b);
+		// 	data->end_a = lst_last((*data->head_a));
+		// 	data->min_range++;
+		// 	data->max_range++;
+		// }
+		// else if ((*data->head_a)->index <= data->max_range)
+		// {
+		// 	push_to_the_other_stack(data->head_a, data->head_b);
+		// 	if ((*data->head_a)->index > data->min_range)
+		// 		swap(data->head_b);
+		// 	data->min_range++;
+		// 	data->max_range++;
+		// }
+		// else if ((*data->head_a)->index > data->max_range)
+		// 	rotate_inside_one_stack(data->head_a);	
+	}
 }
 
 t_data	*indexing_of_stack(t_data *data)
@@ -83,10 +122,12 @@ int main(int ac, char **av)
 	{
 		data = malloc(sizeof(t_data));
 		data->min_range = 0;
-		data->max_range = 5;
+		data->max_range = 15;
 		data = get_joined_args(ac, av, data);
 		data->args = ft_split(data->str, ' ');
 		data = fill_the_stack_a(ac, data);
 		indexing_of_stack(data);
+		//fill_the_stack_b(data);
+		//print_stack(data->head_a);
 	}
 }
