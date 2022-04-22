@@ -6,7 +6,7 @@
 /*   By: zaabou <zaabou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 01:22:41 by zaabou            #+#    #+#             */
-/*   Updated: 2022/04/22 07:01:44 by zaabou           ###   ########.fr       */
+/*   Updated: 2022/04/22 07:21:08 by zaabou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ t_data	*fill_the_stack_a(int ac, t_data *data)
 	t_list	*node;
 	data->head_a = malloc(sizeof(t_list *));
 	data->head_b = malloc(sizeof(t_list *));
-
 	
 	node = malloc(sizeof(t_list));
 	(*data->head_a) = node;
+	(*data->head_b) = NULL;
 	data->i = 0;
 	while (data->args[data->i])
 	{
@@ -66,17 +66,12 @@ void	fill_the_stack_b(t_data *data)
 		{
 			reverse_rotate_inside_one_stack(data->head_a);
 			push_to_the_other_stack(data->head_a, data->head_b);
-			if (data->end_a->index > data->min_range)
-				swap(data->head_b);
-			data->end_a = lst_last((*data->head_a));
 			data->min_range++;
 			data->max_range++;
 		}
 		else if ((*data->head_a)->index <= data->max_range)
 		{
 			push_to_the_other_stack(data->head_a, data->head_b);
-			if ((*data->head_a)->index > data->min_range)
-				swap(data->head_b);
 			data->min_range++;
 			data->max_range++;
 		}
@@ -125,6 +120,6 @@ int main(int ac, char **av)
 		data = fill_the_stack_a(ac, data);
 		indexing_of_stack(data);
 		fill_the_stack_b(data);
-		//print_stack(data->head_a);
+		print_stack(data->head_b);
 	}
 }
