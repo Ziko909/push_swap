@@ -22,7 +22,7 @@ char	*ft_strjoin(char *s1, char *s2)
         while (s2[j])
                 nws[i++] = s2[j++];
         nws[i] = '\0';
-        return (free(s1),nws);
+        return (free(s1), nws);
 }
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
