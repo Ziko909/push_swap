@@ -62,7 +62,6 @@ void	fill_the_stack_b(t_data *data)
 	while (lst_size(*data->head_a) > 0)
 	{
 		data->end_a = lst_last((*data->head_a));
-		data->end_b = lst_last((*data->head_b));
 		if (data->end_a->index <= data->max_range && data->end_a->index < (*data->head_a)->index)
 		{
 			reverse_rotate_inside_one_stack(data->head_a, NULL);
@@ -77,9 +76,7 @@ void	fill_the_stack_b(t_data *data)
 			data->max_range++;
 		}
 		else if ((*data->head_a)->index > data->max_range)
-			rotate_inside_one_stack(data->head_a, NULL);
-		if (lst_size(*data->head_b) >= 2 && (*data->head_b)->index < data->end_b->index)
-				reverse_rotate_inside_one_stack(NULL, data->head_b);
+			rotate_inside_one_stack(data->head_a, NULL);	
 	}
 }
 
@@ -114,8 +111,8 @@ void    return_sorted_stack_a(t_data *data)
 {
   int   bi;
 
-  bi = lst_size(*data->head_b) - 1;
-  while (lst_size((*data->head_b)) > 0)
+  bi = lst_size(*data->head_b);
+  while (lst_size((*data->head_b)))
   {
     if ((*data->head_b)->index == bi)
     {
@@ -124,22 +121,12 @@ void    return_sorted_stack_a(t_data *data)
     }
 	else
 	{
-		if (pos_of_index(data->head_b, bi) <= lst_size(*data->head_b) / 2)
+		if (pos_of_bi(data->head_b, bi) <= lst_size(*data->head_b) / 2)
 			rotate_inside_one_stack(NULL, data->head_b);
 		else
 			reverse_rotate_inside_one_stack(NULL, data->head_b);
 	}
   }
-}
-
-void	small_amount _of_numbers(t_list	*head)
-{
-	if (lst_size(*data->head_a) == 3)
-		sort_tree_numbers(data);
-	if (lst_size(*data->head_a) == 4)
-		sort_four_numbers(data);
-	if (lst_size(*data->head_a) == 5)
-		sort_five_numbers(data);
 }
 int main(int ac, char **av)
 {
@@ -153,13 +140,8 @@ int main(int ac, char **av)
 		data->args = ft_split(data->str, ' ');
 		data = fill_the_stack_a(ac, data);
 		indexing_of_stack(data);
-		if (lst_size(*data->head_a) <= 5)
-			small_amount _of_numbers(data->head_a);
-		//else
-		//{
-			fill_the_stack_b(data);
-			return_sorted_stack_a(data);
-		//}
+		fill_the_stack_b(data);
+        //return_sorted_stack_a(data);
 		print_stack(data->head_a);
 	}
 }

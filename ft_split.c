@@ -9,10 +9,8 @@
 /*   Updated: 2022/04/17 23:43:27 by zaabou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-
-
 #include "push_swap.h"
+
 static	int	countewds(char const *s, char c)
 {
 	int	i;

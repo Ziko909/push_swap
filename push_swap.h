@@ -12,8 +12,9 @@
 
 #ifndef PUSH_SWAP_H
 #define PUSH_SWAP_H
-# include <libc.h>
-
+# include <stdlib.h>
+# include <stdio.h>
+# include <unistd.h>
 typedef struct linked_list{
     int number;
     int index;
@@ -24,6 +25,7 @@ typedef struct data{
     t_list **head_a;
     t_list **head_b;
     t_list  *end_a;
+    t_list  *end_b;
     int     min_range;
     int     max_range;
     int     i;
@@ -41,12 +43,13 @@ int     ft_atoi(const char *str);
 int     lst_size(t_list *stack);
 t_list  *lst_last(t_list *stack);
 char	**ft_split(char const *s, char c);
+int     pos_of_index(t_list **head, int bi);
 
 // instructions inside  One Stack
-void    swap(t_list **head);
+void	swap(t_list **head_a, t_list **head_b);
 void	push_to_the_other_stack(t_list **src, t_list **dest);
-void	rotate_inside_one_stack(t_list **head);
-void	reverse_rotate_inside_one_stack(t_list **head);
+void	rotate_inside_one_stack(t_list **head_a, t_list **head_b);
+void	reverse_rotate_inside_one_stack(t_list **head_a, t_list **head_b);
 
 // instructions inside two Stack
 void	rotate_inside_two_stacks(t_list **head_a, t_list **head_b);

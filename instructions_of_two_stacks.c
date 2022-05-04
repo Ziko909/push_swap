@@ -14,18 +14,18 @@
 #include "push_swap.h"
 void	swap_swap(t_list **head_a, t_list **head_b)
 {
-	swap(head_a);
-	swap(head_b);
+	swap(head_a, NULL);
+	swap(NULL, head_b);
 }
 
 void	rotate_inside_two_stacks(t_list **head_a, t_list **head_b)
 {
-	rotate_inside_one_stack(head_a);
-	rotate_inside_one_stack(head_b);
+	rotate_inside_one_stack(head_a, NULL);
+	rotate_inside_one_stack(NULL, head_b);
 }
 
 void	reverse_rotate_inside_two_stacks(t_list **head_a, t_list **head_b)
 {
-	reverse_rotate_inside_one_stack(head_a);
-	reverse_rotate_inside_one_stack(head_b);
+	reverse_rotate_inside_one_stack(head_a, NULL);
+	reverse_rotate_inside_one_stack(NULL, head_b);
 }

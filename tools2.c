@@ -18,3 +18,17 @@ t_list  *lst_last(t_list *stack)
         stack = stack->next;
     return (stack);
 }
+
+int pos_of_bi(t_list **head, int bi)
+{
+    int pos;
+
+    pos = 0;
+    
+    while ((*head)->index != bi)
+    {
+        *head = (*head)->next;
+        pos++;
+    }
+    return (pos);
+}
