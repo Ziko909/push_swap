@@ -43,7 +43,8 @@ int     ft_atoi(const char *str);
 int     lst_size(t_list *stack);
 t_list  *lst_last(t_list *stack);
 char	**ft_split(char const *s, char c);
-int     pos_of_index(t_list **head, int bi);
+int     pos_of_index(t_list *head, int index);
+void    print_stack(t_list **head);
 
 // instructions inside  One Stack
 void	swap(t_list **head_a, t_list **head_b);
@@ -62,5 +63,11 @@ t_data	*indexing_of_stack(t_data *data);
 
 // Parsing Functions
 t_data	*get_joined_args(int ac, char **av, t_data *data);
+
+// small  stacks
+void	small_amount_of_numbers(t_data *data);
+void    sort_tree_numbers(t_data *data, int bi);
+void    sort_four_numbers(t_data *data);
+void    sort_five_numbers(t_data *data);
 
 #endif

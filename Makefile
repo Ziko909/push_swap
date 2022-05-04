@@ -6,7 +6,7 @@ NAME = push_swap
 
 CCFLAGS = -Wall -Wextra -Werror
 
-SRC_M = ft_split.c instructions_of_one_stack.c instructions_of_two_stacks.c push_swap.c tools.c tools2.c
+SRC_M = ft_split.c instructions_of_one_stack.c instructions_of_two_stacks.c push_swap.c tools.c tools2.c small_amount_of_numbers.c
 
 OBJ_M = $(SRC_M:.c=.o)
 

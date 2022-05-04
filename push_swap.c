@@ -124,7 +124,7 @@ void    return_sorted_stack_a(t_data *data)
     }
 	else
 	{
-		if (pos_of_index(data->head_b, bi) <= lst_size(*data->head_b) / 2)
+		if (pos_of_index(*data->head_b, bi) <= lst_size(*data->head_b) / 2)
 			rotate_inside_one_stack(NULL, data->head_b);
 		else
 			reverse_rotate_inside_one_stack(NULL, data->head_b);
@@ -132,10 +132,10 @@ void    return_sorted_stack_a(t_data *data)
   }
 }
 
-void	small_amount _of_numbers(t_list	*head)
+void	small_amount_of_numbers(t_data *data)
 {
 	if (lst_size(*data->head_a) == 3)
-		sort_tree_numbers(data);
+		sort_tree_numbers(data, 2);
 	if (lst_size(*data->head_a) == 4)
 		sort_four_numbers(data);
 	if (lst_size(*data->head_a) == 5)
@@ -154,12 +154,12 @@ int main(int ac, char **av)
 		data = fill_the_stack_a(ac, data);
 		indexing_of_stack(data);
 		if (lst_size(*data->head_a) <= 5)
-			small_amount _of_numbers(data->head_a);
-		//else
-		//{
+			small_amount_of_numbers(data);
+		else
+		{
 			fill_the_stack_b(data);
 			return_sorted_stack_a(data);
-		//}
+		}
 		print_stack(data->head_a);
 	}
 }

@@ -19,15 +19,15 @@ t_list  *lst_last(t_list *stack)
     return (stack);
 }
 
-int pos_of_bi(t_list **head, int bi)
+int pos_of_index(t_list *head, int index)
 {
     int pos;
 
     pos = 0;
     
-    while ((*head)->index != bi)
+    while (head->index != index)
     {
-        *head = (*head)->next;
+        head = head->next;
         pos++;
     }
     return (pos);
