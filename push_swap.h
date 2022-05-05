@@ -44,7 +44,7 @@ int     lst_size(t_list *stack);
 t_list  *lst_last(t_list *stack);
 char	**ft_split(char const *s, char c);
 int     pos_of_index(t_list *head, int index);
-void    print_stack(t_list **head);
+void    print_stack(t_list *head);
 
 // instructions inside  One Stack
 void	swap(t_list **head_a, t_list **head_b);

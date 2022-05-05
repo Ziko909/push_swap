@@ -35,12 +35,12 @@ t_data	*fill_the_stack_a(int ac, t_data *data)
 	return (data);
 }
 
-void print_stack(t_list **head)
+void print_stack(t_list *head)
 {
-	while (*head)
+	while (head)
 	{
-		printf("in[%d] num[%d]\n",(*head)->index, (*head)->number);
-		*head = (*head)->next;
+		printf("in[%d] num[%d]\n",head->index, head->number);
+		head = head->next;
 	}
 }
 
@@ -117,6 +117,7 @@ void    return_sorted_stack_a(t_data *data)
   bi = lst_size(*data->head_b) - 1;
   while (lst_size((*data->head_b)) > 0)
   {
+	
     if ((*data->head_b)->index == bi)
     {
 			push_to_the_other_stack(data->head_b, data->head_a);
@@ -124,7 +125,7 @@ void    return_sorted_stack_a(t_data *data)
     }
 	else
 	{
-		if (pos_of_index(*data->head_b, bi) <= lst_size(*data->head_b) / 2)
+		if (pos_of_index(*data->head_b, bi) <= (lst_size(*data->head_b) / 2))
 			rotate_inside_one_stack(NULL, data->head_b);
 		else
 			reverse_rotate_inside_one_stack(NULL, data->head_b);
@@ -160,6 +161,5 @@ int main(int ac, char **av)
 			fill_the_stack_b(data);
 			return_sorted_stack_a(data);
 		}
-		print_stack(data->head_a);
 	}
 }
