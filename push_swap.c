@@ -67,13 +67,6 @@ void	fill_the_stack_b(t_data *data)
 	{
 		data->end_a = lst_last((*data->head_a));
 		data->end_b = lst_last((*data->head_b));
-		//if (data->end_a->index <= data->max_range && data->end_a->index < (*data->head_a)->index)
-		//{
-			//reverse_rotate_inside_one_stack(data->head_a, NULL);
-			//push_to_the_other_stack(data->head_a, data->head_b);
-			//data->min_range++;
-			//data->max_range++;
-		//}
 		if ((*data->head_a)->index <= data->max_range)
 		{
 			push_to_the_other_stack(data->head_a, data->head_b, 'a');
@@ -170,7 +163,7 @@ int main(int ac, char **av)
 			if (lst_size(*data->head_a) <= 120)
 				data->max_range = 10;
 			else if (lst_size(*data->head_b) <= 600)
-				data->max_range = 24;
+				data->max_range = 19;
 			fill_the_stack_b(data);
 			return_sorted_stack_a(data);
 		}
