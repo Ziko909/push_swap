@@ -170,7 +170,7 @@ int main(int ac, char **av)
 			if (lst_size(*data->head_a) <= 120)
 				data->max_range = 10;
 			else if (lst_size(*data->head_b) <= 600)
-				data->max_range = 25;
+				data->max_range = 24;
 			fill_the_stack_b(data);
 			return_sorted_stack_a(data);
 		}
