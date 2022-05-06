@@ -18,6 +18,7 @@
 typedef struct linked_list{
     int number;
     int index;
+    struct linked_list *prev;
     struct linked_list *next;
 }t_list;
 
@@ -45,12 +46,14 @@ t_list  *lst_last(t_list *stack);
 char	**ft_split(char const *s, char c);
 int     pos_of_index(t_list *head, int index);
 void    print_stack(t_list *head);
+int     closer_to_the_front(t_list *head, int max_range);
+int     closer_to_the_back(t_list *head, int max_range);
 
 // instructions inside  One Stack
-void	swap(t_list **head_a, t_list **head_b);
-void	push_to_the_other_stack(t_list **src, t_list **dest);
-void	rotate_inside_one_stack(t_list **head_a, t_list **head_b);
-void	reverse_rotate_inside_one_stack(t_list **head_a, t_list **head_b);
+void	swap(t_list **head_a, t_list **head_b, int mode);
+void	push_to_the_other_stack(t_list **src, t_list **dest, char mode);
+void	rotate_inside_one_stack(t_list **head_a, t_list **head_b, int mode);
+void	reverse_rotate_inside_one_stack(t_list **head_a, t_list **head_b, int mode);
 
 // instructions inside two Stack
 void	rotate_inside_two_stacks(t_list **head_a, t_list **head_b);

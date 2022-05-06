@@ -32,3 +32,29 @@ int pos_of_index(t_list *head, int index)
     }
     return (pos);
 }
+int closer_to_the_front(t_list *head, int max_range)
+{
+    int pos;
+    
+    pos = 0;
+    while (head && head->index > max_range)
+    {
+        head = head->next;
+        pos++;
+    }
+    return (pos);
+}
+
+int closer_to_the_back(t_list *head, int max_range)
+{
+    int pos;
+    
+    pos = 0;
+    while (head && head->index > max_range)
+    {
+        head = head->prev;
+        pos++;
+    }
+    return (pos);
+}
+

@@ -14,11 +14,13 @@
 t_data	*fill_the_stack_a(int ac, t_data *data)
 {
 	t_list	*node;
+	t_list	*tmp;
+
 	data->head_a = malloc(sizeof(t_list *));
 	data->head_b = malloc(sizeof(t_list *));
-	
 	node = malloc(sizeof(t_list));
 	(*data->head_a) = node;
+	(*data->head_a)->prev = NULL;
 	(*data->head_b) = NULL;
 	data->i = 0;
 	while (data->args[data->i])
@@ -27,7 +29,9 @@ t_data	*fill_the_stack_a(int ac, t_data *data)
 		if (data->i < ac - 2)
 		{
 			node->next = malloc(sizeof(t_list));
+			tmp = node;
 			node = node->next;
+			node->prev = tmp;
 		}
 		data->i++;
 	}
@@ -63,23 +67,29 @@ void	fill_the_stack_b(t_data *data)
 	{
 		data->end_a = lst_last((*data->head_a));
 		data->end_b = lst_last((*data->head_b));
-		if (data->end_a->index <= data->max_range && data->end_a->index < (*data->head_a)->index)
+		//if (data->end_a->index <= data->max_range && data->end_a->index < (*data->head_a)->index)
+		//{
+			//reverse_rotate_inside_one_stack(data->head_a, NULL);
+			//push_to_the_other_stack(data->head_a, data->head_b);
+			//data->min_range++;
+			//data->max_range++;
+		//}
+		if ((*data->head_a)->index <= data->max_range)
 		{
-			reverse_rotate_inside_one_stack(data->head_a, NULL);
-			push_to_the_other_stack(data->head_a, data->head_b);
-			data->min_range++;
-			data->max_range++;
-		}
-		else if ((*data->head_a)->index <= data->max_range)
-		{
-			push_to_the_other_stack(data->head_a, data->head_b);
+			push_to_the_other_stack(data->head_a, data->head_b, 'a');
 			data->min_range++;
 			data->max_range++;
 		}
 		else if ((*data->head_a)->index > data->max_range)
-			rotate_inside_one_stack(data->head_a, NULL);
-		if (lst_size(*data->head_b) >= 2 && (*data->head_b)->index < data->end_b->index)
-				reverse_rotate_inside_one_stack(NULL, data->head_b);
+		{
+			if (lst_size(*data->head_b) >= 2 && data->end_b->index < (*data->head_b)->index)
+				rotate_inside_two_stacks(data->head_a, data->head_b);
+			else
+				rotate_inside_one_stack(data->head_a, NULL, 1);
+			write(1, "a\n", 1);
+		}
+        if (lst_size(*data->head_b) >= 2 && (*data->head_b)->index < (*data->head_b)->next->index)
+           swap(NULL, data->head_b, 1);
 	}
 }
 
@@ -120,15 +130,15 @@ void    return_sorted_stack_a(t_data *data)
 	
     if ((*data->head_b)->index == bi)
     {
-			push_to_the_other_stack(data->head_b, data->head_a);
+			push_to_the_other_stack(data->head_b, data->head_a, 'b');
             bi--;
     }
 	else
 	{
 		if (pos_of_index(*data->head_b, bi) <= (lst_size(*data->head_b) / 2))
-			rotate_inside_one_stack(NULL, data->head_b);
+			rotate_inside_one_stack(NULL, data->head_b, 1);
 		else
-			reverse_rotate_inside_one_stack(NULL, data->head_b);
+			reverse_rotate_inside_one_stack(NULL, data->head_b, 1);
 	}
   }
 }
@@ -149,7 +159,6 @@ int main(int ac, char **av)
 	{
 		data = malloc(sizeof(t_data));
 		data->min_range = 0;
-		data->max_range = 15;
 		data = get_joined_args(ac, av, data);
 		data->args = ft_split(data->str, ' ');
 		data = fill_the_stack_a(ac, data);
@@ -158,6 +167,10 @@ int main(int ac, char **av)
 			small_amount_of_numbers(data);
 		else
 		{
+			if (lst_size(*data->head_a) <= 120)
+				data->max_range = 10;
+			else if (lst_size(*data->head_b) <= 600)
+				data->max_range = 25;
 			fill_the_stack_b(data);
 			return_sorted_stack_a(data);
 		}

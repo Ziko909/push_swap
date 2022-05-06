@@ -13,7 +13,7 @@
 
 
 #include "push_swap.h"
-void	swap(t_list **head_a, t_list **head_b)
+void	swap(t_list **head_a, t_list **head_b, int mode)
 {
 	t_list	*tmp;
 	t_list	**head;
@@ -21,12 +21,14 @@ void	swap(t_list **head_a, t_list **head_b)
 	if (head_a)
 	{
 		head = head_a;
-		write(1, "sa\n", 3);
+		if (mode == 1)
+			write(1, "sa\n", 3);
 	}
 	else if (head_b)
 	{
 		head = head_b;
-		write(1, "sb\n", 3);
+		if (mode == 1)
+			write(1, "sb\n", 3);
 	}	
 	if (*head && (*head)->next)
 	{
@@ -37,9 +39,13 @@ void	swap(t_list **head_a, t_list **head_b)
 	}
 }
 
-void	push_to_the_other_stack(t_list **src, t_list **dest)
+void	push_to_the_other_stack(t_list **src, t_list **dest, char mode)
 {
-	write(1, "push\n", 5);
+	if (mode == 'a')
+		write(1, "pa\n", 3);
+	else if (mode == 'b')
+		write(1, "pb\n", 3);
+
 	t_list	*tmp;
 	
 	if (*src)
@@ -51,7 +57,7 @@ void	push_to_the_other_stack(t_list **src, t_list **dest)
 	}
 }
 
-void	rotate_inside_one_stack(t_list **head_a, t_list **head_b)
+void	rotate_inside_one_stack(t_list **head_a, t_list **head_b, int mode)
 {
 	t_list	*tmp;
 	t_list	*tmp_loop;
@@ -60,12 +66,14 @@ void	rotate_inside_one_stack(t_list **head_a, t_list **head_b)
 	if (head_a)
 	{
 		head = head_a;
-		write(1, "ra\n", 3);
+		if (mode == 1)
+			write(1, "ra\n", 3);
 	}
 	else if (head_b)
 	{
 		head = head_b;
-		write(1, "rb\n", 3);
+		if (mode == 1)
+			write(1, "rb\n", 3);
 	}
 	if (*head && (*head)->next)
 	{
@@ -79,7 +87,7 @@ void	rotate_inside_one_stack(t_list **head_a, t_list **head_b)
 	}
 }
 
-void	reverse_rotate_inside_one_stack(t_list **head_a, t_list **head_b)
+void	reverse_rotate_inside_one_stack(t_list **head_a, t_list **head_b, int mode)
 {
 	t_list	*tmp_loop;
 	t_list	*tmp;
@@ -88,12 +96,14 @@ void	reverse_rotate_inside_one_stack(t_list **head_a, t_list **head_b)
 	if (head_a)
 	{
 		head = head_a;
-		write(1, "rra\n", 4);
+		if (mode == 1)
+			write(1, "rra\n", 4);
 	}
 	else if (head_b)
 	{
 		head = head_b;
-		write(1, "rrb\n", 4);
+		if (mode == 1)
+			write(1, "rrb\n", 4);
 	}
 	if (*head && (*head)->next)
 	{
