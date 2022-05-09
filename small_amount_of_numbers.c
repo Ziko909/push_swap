@@ -1,4 +1,10 @@
 #include "push_swap.h"
+
+void    sort_two_numbers(t_data *data)
+{
+    if ((*data->head_a)->index > (*data->head_a)->next->index)
+        swap(data->head_a, NULL, 1);
+}
 void    sort_tree_numbers(t_data *data, int bi)
 {
     if ((*data->head_a)->index == bi)

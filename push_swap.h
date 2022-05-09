@@ -6,7 +6,7 @@
 /*   By: zaabou <zaabou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 23:07:33 by zaabou            #+#    #+#             */
-/*   Updated: 2022/04/22 05:45:13 by zaabou           ###   ########.fr       */
+/*   Updated: 2022/05/09 22:44:32 by zaabou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,13 @@ char    *ft_strjoin(char *s1, char *s2);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strdup(const char *s1);
 size_t  ft_strlen(const char *s);
-int     ft_atoi(const char *str);
+int     ft_atoi(const char *str, t_data *data);
 int     lst_size(t_list *stack);
 t_list  *lst_last(t_list *stack);
 char	**ft_split(char const *s, char c);
 int     pos_of_index(t_list *head, int index);
 void    print_stack(t_list *head);
-int     closer_to_the_front(t_list *head, int max_range);
-int     closer_to_the_back(t_list *head, int max_range);
+
 
 // instructions inside  One Stack
 void	swap(t_list **head_a, t_list **head_b, int mode);
@@ -66,11 +65,21 @@ t_data	*indexing_of_stack(t_data *data);
 
 // Parsing Functions
 t_data	*get_joined_args(int ac, char **av, t_data *data);
+int     ft_isdigit(char c);
+int     ft_is_repeat(t_list *tail, int number);
 
 // small  stacks
 void	small_amount_of_numbers(t_data *data);
+void    sort_two_numbers(t_data *data);
 void    sort_tree_numbers(t_data *data, int bi);
 void    sort_four_numbers(t_data *data);
 void    sort_five_numbers(t_data *data);
+
+// Error Function
+void    ft_error(t_data *data);
+
+// Memory Management Functions
+void    ft_free(t_data *data);
+void    clear_the_stack(t_list **head);
 
 #endif

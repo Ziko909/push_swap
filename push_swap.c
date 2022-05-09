@@ -6,7 +6,7 @@
 /*   By: zaabou <zaabou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 01:22:41 by zaabou            #+#    #+#             */
-/*   Updated: 2022/04/22 07:21:08 by zaabou           ###   ########.fr       */
+/*   Updated: 2022/05/09 22:44:59 by zaabou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@ t_data	*fill_the_stack_a(int ac, t_data *data)
 	data->i = 0;
 	while (data->args[data->i])
 	{
-		node->number = ft_atoi(data->args[data->i]);
+		node->next = NULL;
+		node->number = ft_atoi(data->args[data->i], data);
+		if (ft_is_repeat(node->prev, node->number))
+			ft_error(data);
 		if (data->i < ac - 2)
 		{
 			node->next = malloc(sizeof(t_list));
@@ -35,17 +38,7 @@ t_data	*fill_the_stack_a(int ac, t_data *data)
 		}
 		data->i++;
 	}
-	node->next = NULL;
 	return (data);
-}
-
-void print_stack(t_list *head)
-{
-	while (head)
-	{
-		printf("in[%d] num[%d]\n",head->index, head->number);
-		head = head->next;
-	}
 }
 
 t_data	*get_joined_args(int ac, char **av, t_data *data)
@@ -67,22 +60,27 @@ void	fill_the_stack_b(t_data *data)
 	{
 		data->end_a = lst_last((*data->head_a));
 		data->end_b = lst_last((*data->head_b));
-		if ((*data->head_a)->index <= data->max_range)
+		if ((*data->head_a)->index <= data->min_range)
 		{
-			push_to_the_other_stack(data->head_a, data->head_b, 'a');
-			data->min_range++;
-			data->max_range++;
-		}
-		else if ((*data->head_a)->index > data->max_range)
-		{
-			if (lst_size(*data->head_b) >= 2 && data->end_b->index < (*data->head_b)->index)
+			push_to_the_other_stack(data->head_a, data->head_b, 'b');
+			if ((*data->head_a) && (*data->head_a)->index > data->max_range + data->min_range)
 				rotate_inside_two_stacks(data->head_a, data->head_b);
 			else
-				rotate_inside_one_stack(data->head_a, NULL, 1);
-			write(1, "a\n", 1);
+				rotate_inside_one_stack(NULL, data->head_b, 1);
+			data->min_range++;
 		}
-        if (lst_size(*data->head_b) >= 2 && (*data->head_b)->index < (*data->head_b)->next->index)
-           swap(NULL, data->head_b, 1);
+		else if ((*data->head_a)->index < data->max_range + data->min_range)
+		{
+			push_to_the_other_stack(data->head_a, data->head_b, 'b');
+			data->min_range++;
+		}
+		else
+			rotate_inside_one_stack(data->head_a, NULL, 1);
+		if (lst_size(*data->head_b) > 1)
+		{
+			if ((*data->head_b)->index < (*data->head_b)->next->index)
+				swap(NULL, data->head_b, 1);
+		}	
 	}
 }
 
@@ -120,10 +118,9 @@ void    return_sorted_stack_a(t_data *data)
   bi = lst_size(*data->head_b) - 1;
   while (lst_size((*data->head_b)) > 0)
   {
-	
-    if ((*data->head_b)->index == bi)
+	if ((*data->head_b)->index == bi)
     {
-			push_to_the_other_stack(data->head_b, data->head_a, 'b');
+			push_to_the_other_stack(data->head_b, data->head_a, 'a');
             bi--;
     }
 	else
@@ -138,6 +135,8 @@ void    return_sorted_stack_a(t_data *data)
 
 void	small_amount_of_numbers(t_data *data)
 {
+	if (lst_size(*data->head_a) == 2)
+		sort_two_numbers(data);
 	if (lst_size(*data->head_a) == 3)
 		sort_tree_numbers(data, 2);
 	if (lst_size(*data->head_a) == 4)
@@ -148,24 +147,29 @@ void	small_amount_of_numbers(t_data *data)
 int main(int ac, char **av)
 {
 	t_data	*data;
+	int index;
 	if (ac >= 2)
 	{
 		data = malloc(sizeof(t_data));
-		data->min_range = 0;
+		data->min_range = 1;
 		data = get_joined_args(ac, av, data);
 		data->args = ft_split(data->str, ' ');
-		data = fill_the_stack_a(ac, data);
+		index = -1;
+		while (data->args[++index] != NULL);
+		data = fill_the_stack_a(index + 1, data);
 		indexing_of_stack(data);
 		if (lst_size(*data->head_a) <= 5)
 			small_amount_of_numbers(data);
 		else
 		{
-			if (lst_size(*data->head_a) <= 120)
-				data->max_range = 10;
-			else if (lst_size(*data->head_b) <= 600)
-				data->max_range = 19;
+			if (lst_size(*data->head_a) <= 250)
+				data->max_range = 15;
+			else
+				data->max_range = 25;
 			fill_the_stack_b(data);
 			return_sorted_stack_a(data);
 		}
+		ft_free(data);
 	}
+	return (0);
 }

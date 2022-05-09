@@ -6,7 +6,7 @@
 /*   By: zaabou <zaabou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 23:55:17 by zaabou            #+#    #+#             */
-/*   Updated: 2022/04/22 07:22:31 by zaabou           ###   ########.fr       */
+/*   Updated: 2022/05/08 17:54:33 by zaabou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 void	swap(t_list **head_a, t_list **head_b, int mode)
 {
 	t_list	*tmp;
-	t_list	**head;
+	t_list	**head = NULL;
 
 	if (head_a)
 	{
@@ -61,7 +61,7 @@ void	rotate_inside_one_stack(t_list **head_a, t_list **head_b, int mode)
 {
 	t_list	*tmp;
 	t_list	*tmp_loop;
-	t_list	**head;
+	t_list	**head = NULL;
 	
 	if (head_a)
 	{
@@ -91,7 +91,7 @@ void	reverse_rotate_inside_one_stack(t_list **head_a, t_list **head_b, int mode)
 {
 	t_list	*tmp_loop;
 	t_list	*tmp;
-	t_list	**head;
+	t_list	**head = NULL;
 	
 	if (head_a)
 	{
