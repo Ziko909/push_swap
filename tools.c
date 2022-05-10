@@ -7,9 +7,9 @@ char	*ft_strjoin(char *s1, char *s2)
         char    *nws;
         size_t  i;
         size_t  j;
-
-        if (!s1)
-                return (ft_strdup(s2));
+		
+		if (!s1)
+            return (ft_strdup(s2));
         lns = ft_strlen(s1) + ft_strlen(s2);
         i = 0;
         j = 0;
@@ -59,12 +59,12 @@ char	*ft_strdup(const char *s1)
 	int		x;
 	char	*y;
 
+	if (!s1)
+		return (NULL);
 	i = 0;
 	x = 0;
-	while (s1[i] != '\0')
-	{
+	while (s1[i])
 		i++;
-	}
 	y = (char *) malloc(i * sizeof(char) + 1);
 	if (!y)
 		return (NULL);

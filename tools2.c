@@ -64,12 +64,13 @@ void    clear_the_stack(t_list **head)
 {
     t_list  *tmp;
 
-    while (*head != NULL)
+    while (*head)
     {
         tmp = *head;
         free(tmp);
         *head = (*head)->next;
     }
+    free(head);
 }
 
 void    ft_free(t_data *data)
@@ -80,14 +81,18 @@ void    ft_free(t_data *data)
     if (data)
     {
         if(data->args)
+        {
             while(data->args[++i])
                 free(data->args[i]);
-        if (data->str)
+            free(data->args);
+        }
+        if(data->str)
             free(data->str);
         if (data->head_a)
             clear_the_stack(data->head_a);
         if (data->head_b)
-            clear_the_stack(data->head_a);
+            clear_the_stack(data->head_b);
+        free(data);
     }
 }
 // int closer_to_the_front(t_list *head, int max_range)
