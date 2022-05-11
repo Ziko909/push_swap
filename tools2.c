@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   tools2.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zaabou <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/11 16:37:47 by zaabou            #+#    #+#             */
+/*   Updated: 2022/05/11 16:40:56 by zaabou           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "push_swap.h"
 
 int	lst_size(t_list *stack)
@@ -10,40 +21,40 @@ int	lst_size(t_list *stack)
 	return (i - 1);
 }
 
-t_list  *lst_last(t_list *stack)
+t_list	*lst_last(t_list *stack)
 {
-    if (!stack)
-        return (NULL);
-    while (stack->next)
-        stack = stack->next;
-    return (stack);
+	if (!stack)
+		return (NULL);
+	while (stack->next)
+		stack = stack->next;
+	return (stack);
 }
 
-int pos_of_index(t_list *head, int index)
+int	pos_of_index(t_list *head, int index)
 {
-    int pos;
+	int	pos;
 
-    pos = 0;
-    while (head && head->index != index)
-    {
-        head = head->next;
-        pos++;
-    }
-    return (pos);
+	pos = 0;
+	while (head && head->index != index)
+	{
+		head = head->next;
+		pos++;
+	}
+	return (pos);
 }
 
-int ft_is_repeat(t_list *tail, int number)
+int	ft_is_repeat(t_list *tail, int number)
 {
-    while (tail)
-    {
-        if (tail->number == number)
-                return (1);
-        tail = tail->prev;
-    }
-    return (0);
+	while (tail)
+	{
+		if (tail->number == number)
+			return (1);
+		tail = tail->prev;
+	}
+	return (0);
 }
 
-int     ft_isdigit(char c)
+int	ft_isdigit(char c)
 {
-    return(c >= '0' && c <= '9');
+	return (c >= '0' && c <= '9');
 }

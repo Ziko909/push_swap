@@ -6,11 +6,11 @@
 /*   By: zaabou <zaabou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 01:22:41 by zaabou            #+#    #+#             */
-/*   Updated: 2022/05/11 15:11:17 by zaabou           ###   ########.fr       */
+/*   Updated: 2022/05/11 18:01:24 by zaabou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "push_swap.h"
+
 t_data	*fill_the_stack_a(int ac, t_data *data)
 {
 	t_list	*node;
@@ -68,11 +68,10 @@ t_data	*indexing_of_stack(t_data *data)
 {
 	t_list	*tmp_loop;
 	t_list	*tmp;
-	int	len;
-	int	gt;
+	int		len;
+	int		gt;
 
 	len = lst_size((*data->head_a)) - 1;
-
 	tmp_loop = (*data->head_a);
 	tmp = (*data->head_a);
 	while (tmp)
@@ -82,7 +81,7 @@ t_data	*indexing_of_stack(t_data *data)
 		{
 			if (tmp->number < tmp_loop->number)
 				gt++;
-			tmp_loop = tmp_loop->next;	
+			tmp_loop = tmp_loop->next;
 		}
 		tmp->index = len - gt;
 		tmp_loop = (*data->head_a);
@@ -100,10 +99,11 @@ t_data	*ft_init(t_data	*data, int ac, char **av)
 	data = get_joined_args(ac, av, data);
 	return (data);
 }
-int main(int ac, char **av)
+
+int	main(int ac, char **av)
 {
 	t_data	*data;
-	
+
 	if (ac >= 2)
 	{
 		data = malloc(sizeof(t_data));

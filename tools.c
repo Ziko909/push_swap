@@ -1,28 +1,38 @@
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   tools.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zaabou <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/11 16:28:06 by zaabou            #+#    #+#             */
+/*   Updated: 2022/05/11 16:33:15 by zaabou           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "push_swap.h"
 
 char	*ft_strjoin(char *s1, char *s2)
 {
-        size_t  lns;
-        char    *nws;
-        size_t  i;
-        size_t  j;
-		
-		if (!s1)
-            return (ft_strdup(s2));
-        lns = ft_strlen(s1) + ft_strlen(s2);
-        i = 0;
-        j = 0;
-        nws = (char *) malloc(lns + 1);
-        if (!nws)
-                return (NULL);
-        while (s1[j])
-                nws[i++] = s1[j++];
-        j = 0;
-        while (s2[j])
-                nws[i++] = s2[j++];
-        nws[i] = '\0';
-        return (free(s1), nws);
+	size_t	lns;
+	char	*nws;
+	size_t	i;
+	size_t	j;
+
+	if (!s1)
+		return (ft_strdup(s2));
+	lns = ft_strlen(s1) + ft_strlen(s2);
+	i = 0;
+	j = 0;
+	nws = (char *) malloc(lns + 1);
+	if (!nws)
+		return (NULL);
+	while (s1[j])
+		nws[i++] = s1[j++];
+	j = 0;
+	while (s2[j])
+		nws[i++] = s2[j++];
+	nws[i] = '\0';
+	return (free(s1), nws);
 }
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
@@ -53,6 +63,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	ss[j] = '\0';
 	return (ss);
 }
+
 char	*ft_strdup(const char *s1)
 {
 	int		i;
@@ -77,7 +88,7 @@ char	*ft_strdup(const char *s1)
 	return (y);
 }
 
-size_t  ft_strlen(const char *s)
+size_t	ft_strlen(const char *s)
 {
 	int	i;
 
@@ -100,18 +111,16 @@ int	ft_atoi(const char *str, t_data *data)
 		i++;
 	if (str[i] == 43 || str[i] == 45)
 	{
-		if (str[i] == '-')
+		if (str[i++] == '-')
 			r *= -1;
-		i++;
 		if (!ft_isdigit(str[i]))
 			ft_error(data);
 	}
 	while (str[i] >= '0' && str[i] <= '9')
 	{
-		t = t * 10 + str[i] - 48;
+		t = t * 10 + str[i++] - 48;
 		if ((t * r) > 2147483647 || (t * r) < -2147483648)
 			ft_error(data);
-		i++;
 	}
 	if (str[i] && !ft_isdigit(str[i]))
 		ft_error(data);

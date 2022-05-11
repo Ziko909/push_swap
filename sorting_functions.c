@@ -1,12 +1,20 @@
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sorting_functions.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zaabou <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/11 17:51:06 by zaabou            #+#    #+#             */
+/*   Updated: 2022/05/11 17:54:04 by zaabou           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "push_swap.h"
 
 void	fill_the_stack_b(t_data *data)
 {
 	while (lst_size(*data->head_a) > 0)
 	{
-		data->end_a = lst_last((*data->head_a));
-		data->end_b = lst_last((*data->head_b));
 		if ((*data->head_a)->index <= data->min_range)
 		{
 			push_to_the_other_stack(data->head_a, data->head_b, 'b');
@@ -31,26 +39,26 @@ void	fill_the_stack_b(t_data *data)
 	}
 }
 
-void    return_sorted_stack_a(t_data *data)
+void	return_sorted_stack_a(t_data *data)
 {
-  int   bi;
+	int	bi;
 
-  bi = lst_size(*data->head_b) - 1;
-  while (lst_size((*data->head_b)) > 0)
-  {
-	if ((*data->head_b)->index == bi)
-    {
-			push_to_the_other_stack(data->head_b, data->head_a, 'a');
-            bi--;
-    }
-	else
+	bi = lst_size(*data->head_b) - 1;
+	while (lst_size((*data->head_b)) > 0)
 	{
-		if (pos_of_index(*data->head_b, bi) <= (lst_size(*data->head_b) / 2))
-			rotate_inside_one_stack(NULL, data->head_b, 1);
+		if ((*data->head_b)->index == bi)
+		{
+			push_to_the_other_stack(data->head_b, data->head_a, 'a');
+			bi--;
+		}
 		else
-			reverse_rotate_inside_one_stack(NULL, data->head_b, 1);
+		{
+			if (pos_of_index(*data->head_b, bi) <= (lst_size(*data->head_b) / 2))
+				rotate_inside_one_stack(NULL, data->head_b, 1);
+			else
+				reverse_rotate_inside_one_stack(NULL, data->head_b, 1);
+		}
 	}
-  }
 }
 
 void	small_amount_of_numbers(t_data *data)

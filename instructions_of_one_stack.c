@@ -6,18 +6,17 @@
 /*   By: zaabou <zaabou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 23:55:17 by zaabou            #+#    #+#             */
-/*   Updated: 2022/05/08 17:54:33 by zaabou           ###   ########.fr       */
+/*   Updated: 2022/05/11 16:58:33 by zaabou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-
-
 #include "push_swap.h"
+
 void	swap(t_list **head_a, t_list **head_b, int mode)
 {
 	t_list	*tmp;
-	t_list	**head = NULL;
+	t_list	**head;
 
+	head = NULL;
 	if (head_a)
 	{
 		head = head_a;
@@ -41,13 +40,12 @@ void	swap(t_list **head_a, t_list **head_b, int mode)
 
 void	push_to_the_other_stack(t_list **src, t_list **dest, char mode)
 {
+	t_list	*tmp;
+
 	if (mode == 'a')
 		write(1, "pa\n", 3);
 	else if (mode == 'b')
 		write(1, "pb\n", 3);
-
-	t_list	*tmp;
-	
 	if (*src)
 	{
 		tmp = (*src);
@@ -61,8 +59,9 @@ void	rotate_inside_one_stack(t_list **head_a, t_list **head_b, int mode)
 {
 	t_list	*tmp;
 	t_list	*tmp_loop;
-	t_list	**head = NULL;
-	
+	t_list	**head;
+
+	head = NULL;
 	if (head_a)
 	{
 		head = head_a;
@@ -91,8 +90,9 @@ void	reverse_rotate_inside_one_stack(t_list **head_a, t_list **head_b, int mode)
 {
 	t_list	*tmp_loop;
 	t_list	*tmp;
-	t_list	**head = NULL;
-	
+	t_list	**head;
+
+	head = NULL;
 	if (head_a)
 	{
 		head = head_a;
