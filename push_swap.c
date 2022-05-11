@@ -6,7 +6,7 @@
 /*   By: zaabou <zaabou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 01:22:41 by zaabou            #+#    #+#             */
-/*   Updated: 2022/05/10 15:35:55 by zaabou           ###   ########.fr       */
+/*   Updated: 2022/05/11 15:11:17 by zaabou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ t_data	*fill_the_stack_a(int ac, t_data *data)
 		node->number = ft_atoi(data->args[data->i], data);
 		if (ft_is_repeat(node->prev, node->number))
 			ft_error(data);
-		if (data->i < ac - 2)
+		if (data->i < ac - 1)
 		{
 			node->next = malloc(sizeof(t_list));
 			if (!node->next)
@@ -52,10 +52,6 @@ t_data	*fill_the_stack_a(int ac, t_data *data)
 t_data	*get_joined_args(int ac, char **av, t_data *data)
 {
 	data->i = 1;
-	data->str = NULL;
-	data->args = NULL;
-	data->head_a = NULL;
-	data->head_b = NULL;
 	while (data->i <= ac - 1)
 	{
 		if (av[data->i][0] == '\0')
@@ -66,35 +62,6 @@ t_data	*get_joined_args(int ac, char **av, t_data *data)
 		data->i++;
 	}
 	return (data);
-}
-void	fill_the_stack_b(t_data *data)
-{
-	while (lst_size(*data->head_a) > 0)
-	{
-		data->end_a = lst_last((*data->head_a));
-		data->end_b = lst_last((*data->head_b));
-		if ((*data->head_a)->index <= data->min_range)
-		{
-			push_to_the_other_stack(data->head_a, data->head_b, 'b');
-			if ((*data->head_a) && (*data->head_a)->index > data->max_range + data->min_range)
-				rotate_inside_two_stacks(data->head_a, data->head_b);
-			else
-				rotate_inside_one_stack(NULL, data->head_b, 1);
-			data->min_range++;
-		}
-		else if ((*data->head_a)->index < data->max_range + data->min_range)
-		{
-			push_to_the_other_stack(data->head_a, data->head_b, 'b');
-			data->min_range++;
-		}
-		else
-			rotate_inside_one_stack(data->head_a, NULL, 1);
-		if (lst_size(*data->head_b) > 1)
-		{
-			if ((*data->head_b)->index < (*data->head_b)->next->index)
-				swap(NULL, data->head_b, 1);
-		}	
-	}
 }
 
 t_data	*indexing_of_stack(t_data *data)
@@ -124,54 +91,28 @@ t_data	*indexing_of_stack(t_data *data)
 	return (data);
 }
 
-void    return_sorted_stack_a(t_data *data)
+t_data	*ft_init(t_data	*data, int ac, char **av)
 {
-  int   bi;
-
-  bi = lst_size(*data->head_b) - 1;
-  while (lst_size((*data->head_b)) > 0)
-  {
-	if ((*data->head_b)->index == bi)
-    {
-			push_to_the_other_stack(data->head_b, data->head_a, 'a');
-            bi--;
-    }
-	else
-	{
-		if (pos_of_index(*data->head_b, bi) <= (lst_size(*data->head_b) / 2))
-			rotate_inside_one_stack(NULL, data->head_b, 1);
-		else
-			reverse_rotate_inside_one_stack(NULL, data->head_b, 1);
-	}
-  }
-}
-
-void	small_amount_of_numbers(t_data *data)
-{
-	if (lst_size(*data->head_a) == 2)
-		sort_two_numbers(data);
-	if (lst_size(*data->head_a) == 3)
-		sort_tree_numbers(data, 2);
-	if (lst_size(*data->head_a) == 4)
-		sort_four_numbers(data);
-	if (lst_size(*data->head_a) == 5)
-		sort_five_numbers(data);
+	data->str = NULL;
+	data->args = NULL;
+	data->head_a = NULL;
+	data->head_b = NULL;
+	data = get_joined_args(ac, av, data);
+	return (data);
 }
 int main(int ac, char **av)
 {
 	t_data	*data;
-	int index;
+	
 	if (ac >= 2)
 	{
 		data = malloc(sizeof(t_data));
 		if (!data)
 			ft_error(data);
+		data = ft_init(data, ac, av);
 		data->min_range = 1;
-		data = get_joined_args(ac, av, data);
 		data->args = ft_split(data->str, ' ');
-		index = -1;
-		while (data->args[++index] != NULL);
-		data = fill_the_stack_a(index + 1, data);
+		data = fill_the_stack_a(ft_2d_len(data->args), data);
 		indexing_of_stack(data);
 		if (lst_size(*data->head_a) <= 5)
 			small_amount_of_numbers(data);

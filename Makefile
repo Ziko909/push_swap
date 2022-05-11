@@ -6,7 +6,7 @@ NAME = push_swap
 
 CCFLAGS = -Wall -Wextra -Werror
 
-SRC_M = ft_split.c instructions_of_one_stack.c instructions_of_two_stacks.c push_swap.c tools.c tools2.c small_amount_of_numbers.c
+SRC_M = ft_split.c instructions_of_one_stack.c instructions_of_two_stacks.c push_swap.c tools.c tools2.c small_amount_of_numbers.c tools3.c sorting_functions.c
 
 OBJ_M = $(SRC_M:.c=.o)
 
@@ -16,7 +16,7 @@ all : $(NAME)
 	$(CC) $(CCFLAGS) -c $< -o $@
 
 $(NAME) : $(OBJ_M)
-	$(CC) $(CCFLAGS) $(SRC_M) -o $(NAME) -g
+	$(CC) $(CCFLAGS) $(OBJ_M) -o $(NAME)
 
 clean :
 	rm -f $(OBJ_M)

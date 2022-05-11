@@ -103,6 +103,8 @@ int	ft_atoi(const char *str, t_data *data)
 		if (str[i] == '-')
 			r *= -1;
 		i++;
+		if (!ft_isdigit(str[i]))
+			ft_error(data);
 	}
 	while (str[i] >= '0' && str[i] <= '9')
 	{

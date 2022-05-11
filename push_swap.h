@@ -6,7 +6,7 @@
 /*   By: zaabou <zaabou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 23:07:33 by zaabou            #+#    #+#             */
-/*   Updated: 2022/05/09 22:44:32 by zaabou           ###   ########.fr       */
+/*   Updated: 2022/05/11 15:21:22 by zaabou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int     lst_size(t_list *stack);
 t_list  *lst_last(t_list *stack);
 char	**ft_split(char const *s, char c);
 int     pos_of_index(t_list *head, int index);
-void    print_stack(t_list *head);
+int     ft_2d_len(char **str);
 
 
 // instructions inside  One Stack
@@ -60,6 +60,7 @@ void	swap_swap(t_list **head_a, t_list **head_b);
 void    reverse_rotate_inside_two_stacks(t_list **head_a, t_list **head_b);
 
 // Main Fonctions
+t_data  *ft_init(t_data	*data, int ac, char **av);
 t_data	*fill_the_stack_a(int ac, t_data *data);
 t_data	*indexing_of_stack(t_data *data);
 
@@ -68,6 +69,10 @@ t_data	*get_joined_args(int ac, char **av, t_data *data);
 int     ft_isdigit(char c);
 int     ft_is_repeat(t_list *tail, int number);
 
+// sorting functions 
+// big stacks 
+void    fill_the_stack_b(t_data *data);
+void    return_sorted_stack_a(t_data *data);
 // small  stacks
 void	small_amount_of_numbers(t_data *data);
 void    sort_two_numbers(t_data *data);
