@@ -6,43 +6,31 @@
 /*   By: zaabou <zaabou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 01:22:41 by zaabou            #+#    #+#             */
-/*   Updated: 2022/05/11 18:01:24 by zaabou           ###   ########.fr       */
+/*   Updated: 2022/05/12 10:17:45 by zaabou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
 
 t_data	*fill_the_stack_a(int ac, t_data *data)
 {
-	t_list	*node;
 	t_list	*tmp;
 
-	data->head_a = malloc(sizeof(t_list *));
-	if (!data->head_a)
-		ft_error(data);
-	data->head_b = malloc(sizeof(t_list *));
-	if (!data->head_b)
-		ft_error(data);
-	node = malloc(sizeof(t_list));
-	if (!node)
-		ft_error(data);
-	(*data->head_a) = node;
-	(*data->head_a)->prev = NULL;
-	(*data->head_b) = NULL;
 	data->i = 0;
+	ft_init(data, 0, 0, 1);
 	while (data->args[data->i])
 	{
-		node->next = NULL;
-		node->number = ft_atoi(data->args[data->i], data);
-		if (ft_is_repeat(node->prev, node->number))
+		data->node->next = NULL;
+		data->node->number = ft_atoi(data->args[data->i], data);
+		if (ft_is_repeat(data->node->prev, data->node->number))
 			ft_error(data);
 		if (data->i < ac - 1)
 		{
-			node->next = malloc(sizeof(t_list));
-			if (!node->next)
+			data->node->next = malloc(sizeof(t_list));
+			if (!(data->node->next))
 				ft_error(data);
-			tmp = node;
-			node = node->next;
-			node->prev = tmp;
+			tmp = data->node;
+			data->node = data->node->next;
+			data->node->prev = tmp;
 		}
 		data->i++;
 	}
@@ -90,13 +78,32 @@ t_data	*indexing_of_stack(t_data *data)
 	return (data);
 }
 
-t_data	*ft_init(t_data	*data, int ac, char **av)
+t_data	*ft_init(t_data	*data, int ac, char **av, int mode)
 {
-	data->str = NULL;
-	data->args = NULL;
-	data->head_a = NULL;
-	data->head_b = NULL;
-	data = get_joined_args(ac, av, data);
+	if (mode == 0)
+	{
+		data->str = NULL;
+		data->args = NULL;
+		data->head_a = NULL;
+		data->head_b = NULL;
+		data = get_joined_args(ac, av, data);
+		data->min_range = 1;
+	}
+	else
+	{
+		data->head_a = malloc(sizeof(t_list *));
+		if (!data->head_a)
+			ft_error(data);
+		data->head_b = malloc(sizeof(t_list *));
+		if (!data->head_b)
+			ft_error(data);
+		data->node = malloc(sizeof(t_list));
+		if (!data->node)
+			ft_error(data);
+		(*data->head_a) = data->node;
+		(*data->head_b) = NULL;
+		(*data->head_a)->prev = NULL;
+	}
 	return (data);
 }
 
@@ -109,8 +116,7 @@ int	main(int ac, char **av)
 		data = malloc(sizeof(t_data));
 		if (!data)
 			ft_error(data);
-		data = ft_init(data, ac, av);
-		data->min_range = 1;
+		data = ft_init(data, ac, av, 0);
 		data->args = ft_split(data->str, ' ');
 		data = fill_the_stack_a(ft_2d_len(data->args), data);
 		indexing_of_stack(data);

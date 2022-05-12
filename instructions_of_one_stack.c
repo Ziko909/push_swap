@@ -6,7 +6,7 @@
 /*   By: zaabou <zaabou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 23:55:17 by zaabou            #+#    #+#             */
-/*   Updated: 2022/05/11 16:58:33 by zaabou           ###   ########.fr       */
+/*   Updated: 2022/05/12 10:58:17 by zaabou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -55,10 +55,9 @@ void	push_to_the_other_stack(t_list **src, t_list **dest, char mode)
 	}
 }
 
-void	rotate_inside_one_stack(t_list **head_a, t_list **head_b, int mode)
+void	rotate_in_one_stack(t_list **head_a, t_list **head_b, int mode)
 {
 	t_list	*tmp;
-	t_list	*tmp_loop;
 	t_list	**head;
 
 	head = NULL;
@@ -77,19 +76,14 @@ void	rotate_inside_one_stack(t_list **head_a, t_list **head_b, int mode)
 	if (*head && (*head)->next)
 	{
 		tmp = *head;
-		*head = (*head)->next;
-		tmp_loop = *head;
-		while (tmp_loop->next)
-			tmp_loop = tmp_loop->next;
-		tmp_loop->next = tmp;
-		tmp->next = NULL;
+		ft_lst_add_back(head, tmp);
 	}
 }
 
-void	reverse_rotate_inside_one_stack(t_list **head_a, t_list **head_b, int mode)
+void	reverse_rotate_in_one_stack(t_list **head_a, t_list **head_b, int mode)
 {
-	t_list	*tmp_loop;
 	t_list	*tmp;
+	t_list	*tmp_loop;
 	t_list	**head;
 
 	head = NULL;
@@ -113,8 +107,7 @@ void	reverse_rotate_inside_one_stack(t_list **head_a, t_list **head_b, int mode)
 			tmp = tmp_loop;
 			tmp_loop = tmp_loop->next;
 		}
-		tmp_loop->next = *head;
-		*head = tmp_loop;
+		ft_lst_add_front(head, tmp_loop);
 		tmp->next = NULL;
 	}
 }

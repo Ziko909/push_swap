@@ -6,7 +6,7 @@
 /*   By: zaabou <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 16:37:47 by zaabou            #+#    #+#             */
-/*   Updated: 2022/05/11 16:40:56 by zaabou           ###   ########.fr       */
+/*   Updated: 2022/05/12 10:58:30 by zaabou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -30,6 +30,24 @@ t_list	*lst_last(t_list *stack)
 	return (stack);
 }
 
+void	ft_lst_add_back(t_list **head, t_list *node)
+{
+	t_list	*tmp_loop;
+
+	*head = (*head)->next;
+	tmp_loop = *head;
+	while (tmp_loop->next)
+		tmp_loop = tmp_loop->next;
+	tmp_loop->next = node;
+	node->next = NULL;
+}
+
+void	ft_lst_add_front(t_list **head, t_list *node)
+{
+	node->next = *head;
+	*head = node;
+}
+
 int	pos_of_index(t_list *head, int index)
 {
 	int	pos;
@@ -41,20 +59,4 @@ int	pos_of_index(t_list *head, int index)
 		pos++;
 	}
 	return (pos);
-}
-
-int	ft_is_repeat(t_list *tail, int number)
-{
-	while (tail)
-	{
-		if (tail->number == number)
-			return (1);
-		tail = tail->prev;
-	}
-	return (0);
-}
-
-int	ft_isdigit(char c)
-{
-	return (c >= '0' && c <= '9');
 }

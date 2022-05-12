@@ -6,7 +6,7 @@
 /*   By: zaabou <zaabou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 23:07:33 by zaabou            #+#    #+#             */
-/*   Updated: 2022/05/11 17:09:45 by zaabou           ###   ########.fr       */
+/*   Updated: 2022/05/12 10:55:56 by zaabou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ typedef struct linked_list{
 typedef struct data{
 	t_list	**head_a;
 	t_list	**head_b;
-	t_list	*end_a;
-	t_list	*end_b;
+	t_list	*node;
+	int		h_s;
 	int		min_range;
 	int		max_range;
 	int		i;
@@ -43,6 +43,8 @@ char	*ft_strdup(const char *s1);
 size_t	ft_strlen(const char *s);
 int		ft_atoi(const char *str, t_data *data);
 int		lst_size(t_list *stack);
+void	ft_lst_add_back(t_list **head, t_list *node);
+void	ft_lst_add_front(t_list **head, t_list *node);
 t_list	*lst_last(t_list *stack);
 char	**ft_split(char const *s, char c);
 int		pos_of_index(t_list *head, int index);
@@ -51,8 +53,8 @@ int		ft_2d_len(char **str);
 // instructions inside  One Stack
 void	swap(t_list **head_a, t_list **head_b, int mode);
 void	push_to_the_other_stack(t_list **src, t_list **dest, char mode);
-void	rotate_inside_one_stack(t_list **head_a, t_list **head_b, int mode);
-void	reverse_rotate_inside_one_stack(t_list **head_a, t_list **head_b, int mode);
+void	rotate_in_one_stack(t_list **head_a, t_list **head_b, int mode);
+void	reverse_rotate_in_one_stack(t_list **head_a, t_list **head_b, int mode);
 
 // instructions inside two Stack
 void	rotate_inside_two_stacks(t_list **head_a, t_list **head_b);
@@ -60,7 +62,7 @@ void	swap_swap(t_list **head_a, t_list **head_b);
 void	reverse_rotate_inside_two_stacks(t_list **head_a, t_list **head_b);
 
 // Main Fonctions
-t_data	*ft_init(t_data	*data, int ac, char **av);
+t_data  *ft_init(t_data *data, int ac, char **av, int mode);
 t_data	*fill_the_stack_a(int ac, t_data *data);
 t_data	*indexing_of_stack(t_data *data);
 

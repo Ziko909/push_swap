@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   small_amount_of_numbers.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zaabou <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: zaabou <zaabou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 17:55:32 by zaabou            #+#    #+#             */
-/*   Updated: 2022/05/11 17:59:31 by zaabou           ###   ########.fr       */
+/*   Updated: 2022/05/11 19:38:56 by zaabou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -20,9 +20,9 @@ void	sort_two_numbers(t_data *data)
 void	sort_tree_numbers(t_data *data, int bi)
 {
 	if ((*data->head_a)->index == bi)
-		rotate_inside_one_stack(data->head_a, NULL, 1);
+		rotate_in_one_stack(data->head_a, NULL, 1);
 	else if ((*data->head_a)->next->index == bi)
-		reverse_rotate_inside_one_stack(data->head_a, NULL, 1);
+		reverse_rotate_in_one_stack(data->head_a, NULL, 1);
 	if ((*data->head_a)->index > (*data->head_a)->next->index)
 		swap(data->head_a, NULL, 1);
 }
@@ -41,13 +41,13 @@ void	sort_four_numbers(t_data *data)
 	}
 	else if (pos_of_sm == 2)
 	{
-		rotate_inside_one_stack(data->head_a, NULL, 1);
+		rotate_in_one_stack(data->head_a, NULL, 1);
 		swap(data->head_a, NULL, 1);
 		push_to_the_other_stack(data->head_a, data->head_b, 'b');
 	}
 	else if (pos_of_sm == 3)
 	{
-		reverse_rotate_inside_one_stack(data->head_a, NULL, 1);
+		reverse_rotate_in_one_stack(data->head_a, NULL, 1);
 		push_to_the_other_stack(data->head_a, data->head_b, 'b');
 	}
 	sort_tree_numbers(data, 3);
@@ -69,10 +69,11 @@ void	sort_five_numbers(t_data *data)
 		}
 		else
 		{
-			if (pos_of_index(*data->head_a, sm) <= (lst_size(*data->head_a) / 2))
-				rotate_inside_one_stack(data->head_a, NULL, 1);
+			data->h_s = (lst_size(*data->head_a) / 2);
+			if (pos_of_index(*data->head_a, sm) <= data->h_s)
+				rotate_in_one_stack(data->head_a, NULL, 1);
 			else
-				reverse_rotate_inside_one_stack(data->head_a, NULL, 1);
+				reverse_rotate_in_one_stack(data->head_a, NULL, 1);
 		}
 	}
 	if ((*data->head_b)->index < (*data->head_b)->next->index)

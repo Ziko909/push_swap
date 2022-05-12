@@ -6,7 +6,7 @@
 /*   By: zaabou <zaabou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 13:29:43 by zaabou            #+#    #+#             */
-/*   Updated: 2022/05/11 16:44:26 by zaabou           ###   ########.fr       */
+/*   Updated: 2022/05/12 10:51:45 by zaabou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -62,4 +62,20 @@ void	ft_free(t_data *data)
 			clear_the_stack(data->head_b);
 		free(data);
 	}
+}
+
+int	ft_is_repeat(t_list *tail, int number)
+{
+	while (tail)
+	{
+		if (tail->number == number)
+			return (1);
+		tail = tail->prev;
+	}
+	return (0);
+}
+
+int	ft_isdigit(char c)
+{
+	return (c >= '0' && c <= '9');
 }
