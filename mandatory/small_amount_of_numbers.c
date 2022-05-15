@@ -6,10 +6,10 @@
 /*   By: zaabou <zaabou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 17:55:32 by zaabou            #+#    #+#             */
-/*   Updated: 2022/05/11 19:38:56 by zaabou           ###   ########.fr       */
+/*   Updated: 2022/05/12 12:39:07 by zaabou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 void	sort_two_numbers(t_data *data)
 {

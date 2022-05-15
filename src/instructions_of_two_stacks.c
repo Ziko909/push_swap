@@ -6,10 +6,10 @@
 /*   By: zaabou <zaabou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/16 03:30:02 by zaabou            #+#    #+#             */
-/*   Updated: 2022/05/11 19:35:03 by zaabou           ###   ########.fr       */
+/*   Updated: 2022/05/12 12:37:32 by zaabou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 void	swap_swap(t_list **head_a, t_list **head_b)
 {

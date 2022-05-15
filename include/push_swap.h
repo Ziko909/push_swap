@@ -6,7 +6,7 @@
 /*   By: zaabou <zaabou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 23:07:33 by zaabou            #+#    #+#             */
-/*   Updated: 2022/05/12 10:55:56 by zaabou           ###   ########.fr       */
+/*   Updated: 2022/05/14 15:03:07 by zaabou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,10 @@ int		lst_size(t_list *stack);
 void	ft_lst_add_back(t_list **head, t_list *node);
 void	ft_lst_add_front(t_list **head, t_list *node);
 t_list	*lst_last(t_list *stack);
-char	**ft_split(char const *s, char c);
+char	**ft_split(char *s, char c);
 int		pos_of_index(t_list *head, int index);
 int		ft_2d_len(char **str);
+int		stack_is_sorted(t_list *head);
 
 // instructions inside  One Stack
 void	swap(t_list **head_a, t_list **head_b, int mode);
@@ -62,7 +63,7 @@ void	swap_swap(t_list **head_a, t_list **head_b);
 void	reverse_rotate_inside_two_stacks(t_list **head_a, t_list **head_b);
 
 // Main Fonctions
-t_data  *ft_init(t_data *data, int ac, char **av, int mode);
+t_data	*ft_init(t_data *data, int mode);
 t_data	*fill_the_stack_a(int ac, t_data *data);
 t_data	*indexing_of_stack(t_data *data);
 

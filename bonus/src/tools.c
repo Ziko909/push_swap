@@ -3,13 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   tools.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zaabou <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: zaabou <zaabou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 16:28:06 by zaabou            #+#    #+#             */
-/*   Updated: 2022/05/11 16:33:15 by zaabou           ###   ########.fr       */
+/*   Updated: 2022/05/14 14:51:45 by zaabou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "push_swap.h"
+#include "../../include/push_swap_bonus.h"
 
 char	*ft_strjoin(char *s1, char *s2)
 {

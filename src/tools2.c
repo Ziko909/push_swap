@@ -3,13 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   tools2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zaabou <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: zaabou <zaabou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 16:37:47 by zaabou            #+#    #+#             */
-/*   Updated: 2022/05/12 10:58:30 by zaabou           ###   ########.fr       */
+/*   Updated: 2022/05/14 14:44:31 by zaabou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 int	lst_size(t_list *stack)
 {
@@ -44,8 +44,16 @@ void	ft_lst_add_back(t_list **head, t_list *node)
 
 void	ft_lst_add_front(t_list **head, t_list *node)
 {
+	t_list	*tmp;
+
+	while (node->next)
+	{
+		tmp = node;
+		node = node->next;
+	}
 	node->next = *head;
 	*head = node;
+	tmp->next = NULL;
 }
 
 int	pos_of_index(t_list *head, int index)

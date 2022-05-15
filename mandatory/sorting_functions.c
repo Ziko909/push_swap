@@ -6,10 +6,10 @@
 /*   By: zaabou <zaabou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 17:51:06 by zaabou            #+#    #+#             */
-/*   Updated: 2022/05/12 10:27:38 by zaabou           ###   ########.fr       */
+/*   Updated: 2022/05/12 12:39:00 by zaabou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 void	fill_the_stack_b(t_data *data)
 {

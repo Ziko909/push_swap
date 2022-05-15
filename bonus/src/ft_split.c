@@ -6,10 +6,10 @@
 /*   By: zaabou <zaabou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 22:45:26 by zaabou            #+#    #+#             */
-/*   Updated: 2022/04/17 23:43:27 by zaabou           ###   ########.fr       */
+/*   Updated: 2022/05/14 14:51:35 by zaabou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "push_swap.h"
+#include "../../include/push_swap_bonus.h"
 
 static	int	countewds(char const *s, char c)
 {
@@ -75,7 +75,7 @@ static	char	**splfill(char **spl, char c, char const *s)
 	return (spl);
 }
 
-char	**ft_split(char const *s, char c)
+char	**ft_split(char	*s, char c)
 {
 	char	**spl;
 
