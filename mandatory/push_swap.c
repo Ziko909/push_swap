@@ -6,7 +6,7 @@
 /*   By: zaabou <zaabou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 01:22:41 by zaabou            #+#    #+#             */
-/*   Updated: 2022/05/14 15:16:11 by zaabou           ###   ########.fr       */
+/*   Updated: 2022/05/28 18:49:33 by zaabou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../include/push_swap.h"
@@ -135,7 +135,7 @@ int	main(int ac, char **av)
 			if (lst_size(*data->head_a) <= 250)
 				data->max_range = 15;
 			else
-				data->max_range = 25;
+				data->max_range = 35;
 			fill_the_stack_b(data);
 			return_sorted_stack_a(data);
 		}
