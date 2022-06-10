@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   small_amount_of_numbers.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zaabou <zaabou@student.42.fr>              +#+  +:+       +#+        */
+/*   By: zaabou <zaabou@1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 17:55:32 by zaabou            #+#    #+#             */
 /*   Updated: 2022/05/12 12:39:07 by zaabou           ###   ########.fr       */
