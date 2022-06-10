@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zaabou <zaabou@student.42.fr>              +#+  +:+       +#+        */
+/*   By: zaabou <zaabou@1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 01:22:41 by zaabou            #+#    #+#             */
 /*   Updated: 2022/05/28 18:49:33 by zaabou           ###   ########.fr       */
