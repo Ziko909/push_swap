@@ -60,6 +60,6 @@ By following these steps, you can effectively implement the algorithm.
 
 ## Contact Information
 
-- GitHub: Ziko909
-- LinkedIn: Zakaria Aabou
+- GitHub: [Ziko909](https://github.com/Ziko909)
+- LinkedIn: [Zakaria Aabou](https://www.linkedin.com/in/zakaria-aabou)
 - Gmail: aabou.zakaria909@gmail.com
